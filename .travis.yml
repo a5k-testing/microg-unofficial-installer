@@ -15,7 +15,7 @@ addons:
   apt:
     packages:
     - zip
-    - unzip=6.0
+    - unzip
 
 android:
   components:
@@ -25,7 +25,7 @@ android:
 matrix:
   include:
     - env: OSS=true
-      script: ./gradlew buildOtaOSS
+      script: zip -v && unzip -v && ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
   fast_finish: true
