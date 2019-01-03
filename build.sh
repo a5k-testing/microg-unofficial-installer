@@ -179,16 +179,7 @@ cd "$OUT_DIR" || ui_error 'Failed to change the folder'
 rm -rf "$TEMP_DIR" &
 pid="$!"
 
-# Create checksum files
-echo ''
-sha256sum "$FILENAME.zip" > "$OUT_DIR/$FILENAME.zip.sha256" || ui_error 'Failed to compute the sha256 hash'
-echo 'SHA-256:'
-cat "$OUT_DIR/$FILENAME.zip.sha256"
-
-echo ''
-md5sum "$FILENAME.zip" > "$OUT_DIR/$FILENAME.zip.md5" || ui_error 'Failed to compute the md5 hash'
-echo 'MD5:'
-cat "$OUT_DIR/$FILENAME.zip.md5"
+busybox unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
 
 cd "$INIT_DIR" || ui_error 'Failed to change back the folder'
 
