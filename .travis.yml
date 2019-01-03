@@ -14,8 +14,8 @@ git:
 addons:
   apt:
     packages:
-    - zip
-    - unzip
+    - zip=3.0-8
+    - unzip=6.0-9
 
 android:
   components:
