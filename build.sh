@@ -156,8 +156,11 @@ else
 fi
 
 # Useful for reproducible builds
-find "$TEMP_DIR/zip-content" -exec touch -c -t 197911300100.00 '{}' + || ui_error 'Failed to set modification date'
-find "$TEMP_DIR/zip-content" -type d -exec chmod 0700 '{}' + -o -type f -exec chmod 0600 '{}' + || ui_error 'Failed to set permissions'
+find "$TEMP_DIR/zip-content" -exec touch -c -t 200802290333.46 '{}' + || ui_error 'Failed to set modification date of files'
+find "$TEMP_DIR/zip-content" -type d -exec chmod 0700 '{}' + -o -type f -exec chmod 0600 '{}' + || ui_error 'Failed to set permissions of files'
+if test "$PLATFORM" == 'win'; then
+  ATTRIB -R -A -S -H "$TEMP_DIR/zip-content/*" /S /D
+fi
 
 # Remove the previously built files (if they exist)
 rm -f "$OUT_DIR/${FILENAME}".zip* || ui_error 'Failed to remove the previously built files'
@@ -184,14 +187,19 @@ rm -rf "$TEMP_DIR" &
 pid="$!"
 
 echo '---------------------------------------------------------------------------'
+echo '-BUSYBOX-------------------------------------------------------------------'
 busybox unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
+echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+
 echo '---------------------------------------------------------------------------'
+echo '-REAL UNZIP----------------------------------------------------------------'
 unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
+echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+
 echo '---------------------------------------------------------------------------'
+echo '-REAL UNZIP FULL LIST------------------------------------------------------'
 unzip -ZT -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
-echo '---------------------------------------------------------------------------'
-unzip -Z -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
-echo '---------------------------------------------------------------------------'
+echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
 
 cd "$INIT_DIR" || ui_error 'Failed to change back the folder'
 
