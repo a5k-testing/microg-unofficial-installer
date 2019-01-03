@@ -187,6 +187,8 @@ busybox unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip conten
 echo '---------------------------------------------------------------------------'
 unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
 echo '---------------------------------------------------------------------------'
+unzip -ZT -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
+echo '---------------------------------------------------------------------------'
 
 cd "$INIT_DIR" || ui_error 'Failed to change back the folder'
 
