@@ -156,8 +156,8 @@ else
 fi
 
 # Useful for reproducible builds
-find "$TEMP_DIR/zip-content/" -exec touch -c -t 197911300100.00 '{}' + || ui_error 'Failed to set modification date'
-find "$TEMP_DIR/zip-content/" -exec chmod 600 '{}' + || ui_error 'Failed to set permissions'
+find "$TEMP_DIR/zip-content" -exec touch -c -t 197911300100.00 '{}' + || ui_error 'Failed to set modification date'
+find "$TEMP_DIR/zip-content" -type d -exec chmod 0700 '{}' + -o -type f -exec chmod 0600 '{}' + || ui_error 'Failed to set permissions'
 
 # Remove the previously built files (if they exist)
 rm -f "$OUT_DIR/${FILENAME}".zip* || ui_error 'Failed to remove the previously built files'
