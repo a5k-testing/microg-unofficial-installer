@@ -167,7 +167,8 @@ FILENAME="$FILENAME-signed"
 
 # Sign and zipalign
 mkdir -p "$TEMP_DIR/zipsign"
-java -Djava.io.tmpdir="$TEMP_DIR/zipsign" -jar "$BASEDIR/tools/zipsigner.jar" "$TEMP_DIR/flashable.zip" "$TEMP_DIR/$FILENAME.zip" || ui_error 'Failed signing and zipaligning'
+###java -Djava.io.tmpdir="$TEMP_DIR/zipsign" -jar "$BASEDIR/tools/zipsigner.jar" "$TEMP_DIR/flashable.zip" "$TEMP_DIR/$FILENAME.zip" || ui_error 'Failed signing and zipaligning'
+cp -f "$TEMP_DIR/flashable.zip" "$TEMP_DIR/$FILENAME.zip" || ui_error 'Failed to copy' ###
 
 echo ''
 zip -T "$TEMP_DIR/$FILENAME.zip" || ui_error 'The zip is corrupted'
