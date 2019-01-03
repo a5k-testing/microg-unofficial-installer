@@ -124,6 +124,8 @@ oss_files_to_download | while IFS='|' read LOCAL_FILENAME LOCAL_PATH DL_HASH DL_
 done
 STATUS="$?"; if test "$STATUS" -ne 0; then exit "$STATUS"; fi
 
+OPENSOURCE_ONLY=1 ###
+
 if test -z "${OPENSOURCE_ONLY}"; then
   files_to_download | while IFS='|' read LOCAL_FILENAME LOCAL_PATH DL_HASH DL_URL; do
     dl_file "$LOCAL_PATH" "$LOCAL_FILENAME" "$DL_HASH" "$DL_URL"
