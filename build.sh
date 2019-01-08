@@ -93,6 +93,18 @@ dl_file()
   verify_sha1 "$BASEDIR/cache/$1/$2" "$3" || corrupted_file "$BASEDIR/cache/$1/$2"
 }
 
+list_files()  # $1 => Folder to scan
+{
+  test -d "$1" || return
+  for entry in "$1"/*; do
+    if test -d "${entry}"; then
+      list_files "${entry}"
+    else
+      printf '%s\n' "${entry}" || ui_error "File listing failed, entry => ${entry}, folder => $1"
+    fi
+  done
+}
+
 . "$BASEDIR/conf.sh"
 
 # Check dependencies
@@ -169,7 +181,7 @@ rm -f "$OUT_DIR/${FILENAME}-signed".zip* || ui_error 'Failed to remove the previ
 # Compress and sign
 cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
 #ls -1 --color=never | sort -f | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ -i "*" || ui_error 'Failed compressing'
-find . | sort -f | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ -i "*" || ui_error 'Failed compressing'
+list_files . | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
 FILENAME="$FILENAME-signed"
 
 # Sign and zipalign
