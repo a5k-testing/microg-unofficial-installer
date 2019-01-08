@@ -184,7 +184,7 @@ echo '=========================='
 
 # Compress and sign
 cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
-list_files . | sort -f | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
+list_files . | sort -f | zip -9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
 FILENAME="$FILENAME-signed"
 
 # Sign and zipalign
