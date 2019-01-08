@@ -1,6 +1,4 @@
-sudo: false
-dist: xenial
-group: stable
+#dist: xenial
 
 language: android
 jdk: openjdk9
@@ -32,6 +30,10 @@ matrix:
       script: ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
+    - env: OSS=true
+      os: windows
+      script: ./gradlew buildOtaOSS
+https://travis-ci.com/a5k-testing/unzip-test/builds/96659241
   fast_finish: true
 
 before_cache:
