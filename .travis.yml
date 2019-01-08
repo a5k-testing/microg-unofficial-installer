@@ -1,7 +1,8 @@
 dist: xenial
 group: travis_latest
+
 language: android
-jdk: openjdk8
+jdk: openjdk9
 
 cache:
   directories:
@@ -16,7 +17,6 @@ git:
 addons:
   apt:
     packages:
-    - openjdk8
     - unzip=6.0*
     - zip=3.0*
 
