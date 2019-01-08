@@ -1,8 +1,7 @@
-
 #dist: xenial
 
 language: android
-jdk: openjdk9
+jdk: openjdk8
 
 cache:
   directories:
