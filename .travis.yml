@@ -32,6 +32,7 @@ matrix:
       #script: ./gradlew buildOta
     - env: W-OSS=true
       os: windows
+      language: generic
       script: ./gradlew buildOtaOSS
 https://travis-ci.com/a5k-testing/unzip-test/builds/96659241
   fast_finish: true
