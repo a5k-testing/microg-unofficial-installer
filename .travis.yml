@@ -1,3 +1,4 @@
+
 #dist: xenial
 
 language: android
@@ -30,11 +31,10 @@ matrix:
       script: ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
-    #- env: W-OSS=true
-      #os: windows
+    - env: W-OSS=true
+      os: windows
       #language: generic
-      #script: ./gradlew buildOtaOSS
-https://travis-ci.com/a5k-testing/unzip-test/builds/96659241
+      script: ./gradlew buildOtaOSS
   fast_finish: true
 
 before_cache:
