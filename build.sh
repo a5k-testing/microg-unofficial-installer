@@ -178,12 +178,11 @@ fi
 rm -f "$OUT_DIR/${FILENAME}".zip* || ui_error 'Failed to remove the previously built files'
 rm -f "$OUT_DIR/${FILENAME}-signed".zip* || ui_error 'Failed to remove the previously built files'
 
+# Compress and sign
+cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
 echo '=========================='
 list_files . | sort -f
 echo '=========================='
-
-# Compress and sign
-cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
 list_files . | sort -f | zip -9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
 FILENAME="$FILENAME-signed"
 
