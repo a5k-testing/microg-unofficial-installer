@@ -30,10 +30,9 @@ matrix:
       script: ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
-    - env: W-OSS=true
-      os: windows
-      #language: generic
-      script: ./gradlew buildOtaOSS
+    #- env: W-OSS=true
+      #os: windows
+      #script: ./gradlew buildOtaOSS
   fast_finish: true
 
 before_cache:
