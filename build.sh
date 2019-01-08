@@ -168,7 +168,7 @@ rm -f "$OUT_DIR/${FILENAME}-signed".zip* || ui_error 'Failed to remove the previ
 
 # Compress and sign
 cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
-ls | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'  # Note: There are quotes around the wildcard to use the zip globbing instead of the shell globbing
+ls -1 | sort -f | zip -r9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
 FILENAME="$FILENAME-signed"
 
 # Sign and zipalign
