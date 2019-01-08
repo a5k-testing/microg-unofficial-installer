@@ -16,6 +16,7 @@ git:
 addons:
   apt:
     packages:
+    - openjdk8
     - unzip=6.0*
     - zip=3.0*
 
