@@ -222,9 +222,11 @@ LC_ALL=C unzip -ZT -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip c
 echo 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
 
 LC_ALL=C busybox unzip -l "$OUT_DIR/$FILENAME.zip" > 1.dat
-LC_ALL=C unzip -l "$OUT_DIR/$FILENAME.zip" > 2.dat
 
-diff 1.dat 2.dat
+LC_ALL=C unzip -l "$OUT_DIR/$FILENAME.zip" > 2.dat
+sed -i -- 's/2008-02-29/02-29-08/g' 2.dat  # Fix not standard unzip dates
+
+diff -d 1.dat 2.dat
 
 cd "$INIT_DIR" || ui_error 'Failed to change back the folder'
 
