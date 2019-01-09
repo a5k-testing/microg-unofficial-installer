@@ -204,6 +204,8 @@ sha256sum "$FILENAME.zip" > "$OUT_DIR/$FILENAME.zip.sha256" || ui_error 'Failed 
 echo 'SHA-256:'
 cat "$OUT_DIR/$FILENAME.zip.sha256"
 
+stat "$FILENAME.zip"
+
 echo '---------------------------------------------------------------------------'
 echo '-BUSYBOX-------------------------------------------------------------------'
 LC_ALL=C busybox unzip -l "$OUT_DIR/$FILENAME.zip" || ui_error 'Failed to list zip content'
