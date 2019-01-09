@@ -181,9 +181,6 @@ rm -f "$OUT_DIR/${FILENAME}-signed".zip* || ui_error 'Failed to remove the previ
 # Compress and sign
 cd "$TEMP_DIR/zip-content" || ui_error 'Failed to change the folder'
 echo '=========================='
-find .
-echo '=========================='
-echo '=========================='
 find . | sort -f
 echo '=========================='
 find . | sort -f | zip -9Xq "$TEMP_DIR/flashable.zip" -@ || ui_error 'Failed compressing'
