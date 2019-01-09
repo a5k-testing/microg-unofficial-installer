@@ -229,6 +229,8 @@ sed -i -- 's/2008-02-29/02-29-08/g' 2.dat  # Fix not standard unzip dates
 echo '=================================================='
 diff -abdT -U3 1.dat 2.dat
 echo '=================================================='
+diff -abdT -LDiff -U3 1.dat 2.dat
+echo '=================================================='
 
 cd "$INIT_DIR" || ui_error 'Failed to change back the folder'
 
