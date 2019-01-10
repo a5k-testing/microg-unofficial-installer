@@ -1,7 +1,7 @@
-#dist: xenial
+dist: xenial
 
 language: android
-jdk: openjdk8
+#jdk: openjdk8
 
 cache:
   directories:
@@ -13,11 +13,11 @@ cache:
 git:
   depth: 3
 
-addons:
-  apt:
-    packages:
-    - unzip=6.0*
-    - zip=3.0*
+#addons:
+  #apt:
+    #packages:
+    #- unzip=6.0*
+    #- zip=3.0*
 
 android:
   components:
