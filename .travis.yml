@@ -1,7 +1,7 @@
 dist: xenial
 
 language: java
-jdk: openjdk9
+jdk: openjdk8
 
 cache:
   directories:
@@ -28,7 +28,7 @@ matrix:
   include:
     - env: OSS=true
       script:
-      - ./gradlew wrapper
+      #- ./gradlew wrapper
       - ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
