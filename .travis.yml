@@ -4,12 +4,12 @@ language: java
 jdk: openjdk8
 
 global:
-cache:
-  directories:
-  - cache/
-  - "$HOME/.gradle/caches/"
-  - "$HOME/.gradle/wrapper/"
-  - "$HOME/.android/build-cache/"
+  cache:
+    directories:
+    - cache/
+    - "$HOME/.gradle/caches/"
+    - "$HOME/.gradle/wrapper/"
+    - "$HOME/.android/build-cache/"
 
 git:
   depth: 3
@@ -57,7 +57,7 @@ jobs:
       - ./gradlew clean buildOtaOSS
     - stage: deploy
       <<: *my-deploy
-      cache: true
+      cache:
       env:
         - deploy=true
         - Type=Dep2
