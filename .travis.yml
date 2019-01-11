@@ -3,13 +3,12 @@ dist: xenial
 language: java
 jdk: openjdk8
 
-global:
-  cache:
-    directories:
-    - cache/
-    - "$HOME/.gradle/caches/"
-    - "$HOME/.gradle/wrapper/"
-    - "$HOME/.android/build-cache/"
+cache:
+  directories:
+  - cache/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache/"
 
 git:
   depth: 3
@@ -55,16 +54,17 @@ jobs:
         - Type=Dep1
       script:
       - ./gradlew clean buildOtaOSS
+      before_cache:
+      cache:
     - stage: deploy
       <<: *my-deploy
-      cache:
-      before_cache:
       env:
         - deploy=true
         - Type=Dep2
       script:
       - ./gradlew clean buildOtaOSS
-
+      before_cache:
+      cache:
     #- env: OSS=false
       #script: ./gradlew buildOta
     #- env: W-OSS=true
