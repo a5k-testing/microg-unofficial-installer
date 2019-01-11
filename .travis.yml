@@ -26,8 +26,8 @@ android:
 
 stages:
   - test
-  - deploy
-    #if: os = linux AND env(OSS) = true
+  - name: deploy
+    if: os = linux AND env(OSS) = true
 
 jobs:
   include:
