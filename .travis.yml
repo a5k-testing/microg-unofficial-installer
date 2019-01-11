@@ -24,7 +24,11 @@ android:
   - build-tools-27.0.3
   - android-27
 
-matrix:
+stages:
+  - test
+  - deploy
+
+jobs:
   include:
     - env: OSS=true
       script:
