@@ -69,4 +69,4 @@ deploy:
   on:
     repo: micro5k/microg-unofficial-installer
     stage: deploy
-    condition: $deploy = true
+    #condition: $deploy = true
