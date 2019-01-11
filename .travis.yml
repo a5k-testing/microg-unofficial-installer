@@ -34,8 +34,8 @@ x-deploy: &my-deploy
     file: output/*
     skip_cleanup: true
     on:
-      #repo: micro5k/microg-unofficial-installer
-      condition: $deploy = true
+      repo: micro5k/microg-unofficial-installer
+      condition: "$deploy != true"
 
 stages:
   - test
@@ -58,6 +58,7 @@ jobs:
     - stage: deploy
       <<: *my-deploy
       cache:
+      before_cache:
       env:
         - deploy=true
         - Type=Dep2
