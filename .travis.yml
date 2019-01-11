@@ -34,6 +34,11 @@ jobs:
       script:
       #- ./gradlew wrapper
       - ./gradlew buildOtaOSS
+    - stage: deploy
+      env: OSS=true
+      script:
+      #- ./gradlew wrapper
+      - ./gradlew buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
     #- env: W-OSS=true
