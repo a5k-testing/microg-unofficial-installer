@@ -50,12 +50,13 @@ jobs:
     - stage: deploy
       <<: *my-deploy
       env:
-        - deploy=true
+        #- deploy=true
         - Type=Dep1
       script:
       - ./gradlew clean buildOtaOSS
     - stage: deploy
       <<: *my-deploy
+      cache: true
       env:
         - deploy=true
         - Type=Dep2
