@@ -27,6 +27,7 @@ android:
 stages:
   - test
   - deploy
+    if: os = linux
     #if: os = linux AND env(OSS) = true
 
 jobs:
@@ -68,4 +69,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: micro5k/microg-unofficial-installer
-    condition: env(deploy) = true
+    condition: $deploy = true
