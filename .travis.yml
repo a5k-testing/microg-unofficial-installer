@@ -27,6 +27,7 @@ android:
 stages:
   - test
   - deploy
+    if: os = linux AND env(OSS) = true
 
 jobs:
   include:
@@ -38,7 +39,7 @@ jobs:
       env: OSS=true
       script:
       #- ./gradlew wrapper
-      - ./gradlew buildOtaOSS
+      - ./gradlew clean buildOtaOSS
     #- env: OSS=false
       #script: ./gradlew buildOta
     #- env: W-OSS=true
@@ -65,5 +66,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: micro5k/microg-unofficial-installer
-    tags: true
-    condition: $OSS = true
+    condition: stage = deploy
