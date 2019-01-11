@@ -34,7 +34,7 @@ x-deploy: &my-deploy
     skip_cleanup: true
     on:
       repo: micro5k/microg-unofficial-installer
-      condition: "$deploy != false"
+      condition: "$not_deploy = true"
 
 stages:
   - test
@@ -50,7 +50,7 @@ jobs:
     - stage: deploy
       <<: *my-deploy
       env:
-        #- deploy=true
+        #- not_deploy=true
         - Type=Dep1
       script:
       - ./gradlew clean buildOtaOSS
@@ -59,7 +59,7 @@ jobs:
     - stage: deploy
       <<: *my-deploy
       env:
-        - deploy=true
+        - not_deploy=true
         - Type=Dep2
       script:
       - ./gradlew clean buildOtaOSS
