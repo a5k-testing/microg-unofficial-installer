@@ -36,7 +36,9 @@ jobs:
       #- ./gradlew wrapper
       - ./gradlew buildOtaOSS
     - stage: deploy
-      env: OSS=true
+      - env:
+        OSS=true
+        deploy=true
       script:
       #- ./gradlew wrapper
       - ./gradlew clean buildOtaOSS
@@ -66,4 +68,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: micro5k/microg-unofficial-installer
-    condition: stage = deploy
+    condition: deploy = true
