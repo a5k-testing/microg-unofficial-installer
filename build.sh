@@ -18,6 +18,14 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 LICENSE
 
+echo "$LANG"
+echo "$LANGUAGE"
+echo "$LC_ALL"
+echo "$TZ"
+echo "$UNZIP"
+echo "$UNZIP_OPTS"
+echo "$UNZIPOPT"
+
 export LANG=en_US
 export LANGUAGE=''
 export LC_ALL=''
