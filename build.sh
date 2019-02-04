@@ -21,6 +21,7 @@ LICENSE
 export LANG=en_US
 export LANGUAGE=''
 export LC_ALL=''
+export UNZIP=''
 
 ui_error()
 {
