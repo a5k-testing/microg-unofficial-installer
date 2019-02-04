@@ -18,21 +18,14 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 LICENSE
 
-export LANG=en_US
-export LANGUAGE=''
-export LC_ALL=''
 export TZ=UTC
+export LANG=en_US
+unset LANGUAGE
+unset LC_AL
+
 unset UNZIP
 unset UNZIP_OPTS
 unset UNZIPOPT
-
-echo "$LANG"
-echo "$LANGUAGE"
-echo "$LC_ALL"
-echo "$TZ"
-echo "$UNZIP"
-echo "$UNZIP_OPTS"
-echo "$UNZIPOPT"
 
 ui_error()
 {
